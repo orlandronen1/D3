@@ -6,26 +6,25 @@ require 'sinatra/reloader'
 @size = 3
 
 # Do logical AND
-def and(t, f)
-
+def log_and(t, f)
+  false
 end
 
 # Do logical OR
-def or(t, f)
-
+def log_or(t, f)
+  false
 end
 
 # Do logical NAND
 def nand(t, f)
-  not and(t, f)
+  not log_and(t, f)
 end
 
 # Do logical NOR
 def nor(t, f)
-  not or(t, f)
+  not log_or(t, f)
 end
 
-# Get Requests
 
 # Template
 # get '/path' do
@@ -36,7 +35,7 @@ end
 # What to do if route cannot be found
 not_found do
   status 404
-  # erb :error
+  erb :error
 end
 
 # Main page
@@ -44,4 +43,15 @@ get '/' do
   erb :index
 end
 
-# Post requests
+post '/' do
+  puts "Truth: #{params["truth_symbol"]}, False: #{params["false_symbol"]}, Size: #{params["size"]}"
+  
+  if params["truth_symbol"] == params["false_symbol"] or
+        params["truth_symbol"].length != 1 or 
+        params["false_symbol"].length != 1 or
+        params["size"].to_i < 2
+    erb :error
+  else
+    erb :table
+  end
+end
