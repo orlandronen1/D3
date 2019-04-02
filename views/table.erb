@@ -1,0 +1,51 @@
+<html>
+<head> </head>
+<body>
+    <table border="1">
+        <tr>
+            <!-- shows bit # in descending order. e.g., if size is 3, goes 2 | 1 | 0 -->
+            <% for i in 1..size do %>
+                <th> <%= size - i %> </th>
+            <% end %>
+            <th> AND </th>
+            <th> OR </th>
+            <th> NAND </th>
+            <th> NOR </th> 
+        </tr>
+        <!-- creates 2^size rows -->
+        <% for i in combos do %>
+            <tr>
+                <!-- List each binary value in this combination -->
+                <% for j in 0...i.length do %>
+                    <td> 
+                        <% if i[j].to_i == 0 %>
+                            <%= false_symbol %>
+                        <% else %>
+                            <%= truth_symbol %>
+                        <% end %>
+                    </td>
+                <% end %>
+
+                <!-- Evaluate each bitwise logic operation -->
+                <!-- AND -->
+                <td> 
+                    <%= i.count('0') == 0 ? truth_symbol : false_symbol %>
+                </td>
+                <!-- OR -->
+                <td> 
+                    <%= i.count('1') == 0 ? false_symbol : truth_symbol %>
+                </td>
+                <!-- NAND -->
+                <td> 
+                    <%= i.count('0') == 0 ? false_symbol : truth_symbol %>
+                </td>
+                <!-- NOR -->
+                <td> 
+                    <%= i.count('1') == 0 ? truth_symbol : false_symbol %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+    <a href="/"> Back to main page </a>
+</body>
+</html>
