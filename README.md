@@ -3,6 +3,8 @@ Deliverable 3 for CS1632, Spring 2019
 
 ## Ronen Orland | roo18
 
+Be wary of setting the size to 6+, as reducing the speed of Katalon's test step traversal may be necessary to prevent it from timing out while waiting for things to load. 
+
 ## Requirements for Web Application
 1. Upon accessing the main page ("/", i.e., http://localhost:4567), the system shall display a page with three textboxes and a single submit button, arranged together and each labeled. The first textbox shall be labeled "True symbol:", the second textbox "False symbol:", and the third textbox "Size (2^x):". The button shall be labeled "Show truth table".
 2. In addition to data already specified, all pages, including the main page itself, shall include a link back to the main page ("/", i.e., http://localhost:4567); however, the text in the link may differ from page to page.
